@@ -1,3 +1,6 @@
+from math import *
+from time import *
+
 villes_existantes = ['marseille', 'toulouse', 'paris', 'perpignan']
 villes_distances = [['marseille',['toulouse',403],['paris',773],['perpignan',317]],
                     ['toulouse',['marseille',403],['paris',676],['perpignan',207]],
@@ -5,9 +8,6 @@ villes_distances = [['marseille',['toulouse',403],['paris',773],['perpignan',317
                     ['perpignan',['marseille',317],['toulouse',207],['paris',846]],]
 
 def calcul_routier(ville_depart,ville_arrivee):
-    vitesse = 0
-    temps_minutes = 0
-    distance_parcourue = 0
     for pos in range(len(villes_distances)):
         if ville_depart == villes_distances[pos][0]:
             case_ville_dep = pos
@@ -17,17 +17,19 @@ def calcul_routier(ville_depart,ville_arrivee):
             distance = villes_distances[case_ville_dep][pos][1]
             break
     
-    while (distance_parcourue < distance):
-        if (vitesse == 90):
-            temps_minutes += 1
-        if (vitesse < 90):
-            vitesse =+ 10
-            temps_minutes += 1
-        for i in range(vitesse):
-            print (i)
-        distance_parcourue = distance_parcourue + vitesse / 60
+    e = distance/84
+    if (e%1 == 1):
+        r = (e * 3600) + ((e/2) * 900)
+    else:
+        e2 = floor(e) - 1
+        t1 = (e2 * 3600) + (e2 * 900)
+        j = distance - (e2 * 84)
+        f = j - 7.5
+        t2 = ((f * 100)/25)
+        r = t1 + t2 + 540
+        r = strftime('%H %M', gmtime(r))
         
-    return ([ville_depart,ville_arrivee,distance, temps_minutes])
+    return ([ville_depart,ville_arrivee,distance, r])
 
 """
 ville_depart_exist = False
