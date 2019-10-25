@@ -18,13 +18,15 @@ def calcul_routier(ville_depart,ville_arrivee):
             break
     
     while (distance_parcourue < distance):
-        if vitesse == 90:
+        if (vitesse == 90):
             temps_minutes += 1
-        if vitesse < 90:
-            vitesse += 10
+        if (vitesse < 90):
+            vitesse =+ 10
             temps_minutes += 1
+        for i in range(vitesse):
+            print (i)
         distance_parcourue = distance_parcourue + vitesse / 60
-
+        
     return ([ville_depart,ville_arrivee,distance, temps_minutes])
 
 """
