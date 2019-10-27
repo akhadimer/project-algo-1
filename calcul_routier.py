@@ -31,7 +31,7 @@ def calcul_routier(ville_depart,ville_arrivee):
         
     return ([ville_depart,ville_arrivee,distance, r])
 
-"""
+
 ville_depart_exist = False
 ville_arrivee_exist = False
 print ("Villes disponibles pour le départ et l'arrivée du camion : Marseille, Toulouse, Paris, Perpignan")
@@ -59,7 +59,7 @@ while True:
             print ('La ville n\'existe pas !') 
     if ville_arrivee_exist == True:
         break
-"""
-tab = calcul_routier('marseille','toulouse')
+
+tab = calcul_routier('ville_depart,ville_arrivee')
 
 print (tab)
